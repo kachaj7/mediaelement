@@ -1435,13 +1435,8 @@ Object.assign(_player2.default.prototype, {
 				setTimeout(function checkFullscreen() {
 
 					if (t.isNativeFullScreen) {
-						var percentErrorMargin = 0.002,
-						    windowWidth = _window2.default.innerWidth || _document2.default.documentElement.clientWidth || _document2.default.body.clientWidth,
-						    screenWidth = screen.width,
-						    absDiff = Math.abs(screenWidth - windowWidth),
-						    marginError = screenWidth * percentErrorMargin;
 
-						if (absDiff > marginError) {
+						if (!Features.isFullScreen()) {
 							t.exitFullScreen();
 						} else {
 							setTimeout(checkFullscreen, 500);

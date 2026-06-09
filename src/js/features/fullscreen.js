@@ -227,14 +227,7 @@ Object.assign(MediaElementPlayer.prototype, {
 				setTimeout(function checkFullscreen () {
 
 					if (t.isNativeFullScreen) {
-						let percentErrorMargin = 0.002, // 0.2%
-							windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-							screenWidth = screen.width,
-							absDiff = Math.abs(screenWidth - windowWidth),
-							marginError = screenWidth * percentErrorMargin;
-
-						// check if the video is suddenly not really fullscreen
-						if (absDiff > marginError) {
+						if (!Features.isFullScreen()) {
 							// manually exit
 							t.exitFullScreen();
 						} else {
